@@ -12,4 +12,6 @@ namespace Ceii.Api.Services.Abstract;
 public interface IIdentityRepository
 {
     Task<PaginatedList<User>> GetByRole(IdentityRole role, PagingInfo info);
+
+    Task<User> Create(User u);
 }
