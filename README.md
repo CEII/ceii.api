@@ -104,9 +104,13 @@ Desde el directorio que contiene el contexto de la base de datos (Ceii.Api.Data)
 
     **OJO**: Solo usar git flow para la creacion de ramas
 
-2. Commitear segun [estandares](#estandar-para-commits)
+2. Commitear segun [estandares](#estandar-para-repositorios)
 
 3. Crear un Pull Request desde **gh cli**
+
+4. Avisar al reviewer de la creacion del PR
+    - Si son necesarios cambios posterior a la revision, y han realizado nuevos commits unicamente pushearlos a la rama correspondiente
+
 
 ### Git Flow
 Para facilitar el desarrollo, se usará [GitFlow](https://danielkummer.github.io/git-flow-cheatsheet/) y su manejo por ramas.
@@ -138,3 +142,28 @@ Para facilitar la creacion de PR's. [Instalar](https://cli.github.com/)
     Ejemplo (desde rama ejemplo/PR-01):
     
     **`gh pr create -f -a @me -r wmoralesdev -p 'CEII Portal'`**
+
+---
+
+## Estandar para repositorios
+
+### Ramas
+- Los nombres de las ramas tendran el prefijo de git flow y de nombre el numero de ticket en el proyecto seguido de una breve descripcion 
+
+    `(feature|bug|hotfix)/GH-PJ-NUM <descripcion-breve>`
+
+
+### Commits
+- Practicar mensajes de commmit semanticos. Los mensajes seguirán un formato estandar:
+
+`(feat|fix|docs|style|refactor|perf|test|chore): <descripcion-breve>`
+
+#### Tipos de commit
+- **`feat`**: Agregar una característica
+- **`fix`**: Solucionar un bug
+- **`docs`**: Cambios en la documentación
+- **`style`**: Cambio en el formato del código (salto de linea, indentacion, etc. que no implique cambio en funcionalidad)
+- **`refactor`**: Refactorizar código
+- **`perf`**: Actualizar código en su desempeño
+- **`test`**: Agregar tests, actualizar o refactorizar tests
+- **`chore`**: Actualizar sin afectar el uso. Por ejemplo, actualización de paquetes, cambio de mensajes en strings, etc.
