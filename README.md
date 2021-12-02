@@ -113,3 +113,20 @@ Para facilitar el desarrollo, se usará [GitFlow](https://danielkummer.github.io
 - Bugfix: para reparar errores que no están en producción
 - Release: para publicar una versión a producción
 - Hotfix: para reparar errores en caliente, generados o encontrados en producción
+
+### GH CLI
+Para facilitar la creacion de PR's. [Instalar](https://cli.github.com/)
+
+#### Comandos
+
+- **`gh pr create`**
+    
+    Permite crear ramas a traves de flags.
+    - `-f` completa la descripcion con los nombres de los commits de la rama existente
+    - `-a <login>` completa el assignee por su usuario. Usar @me para autoasignarse
+    - `-r <login>` completa el reviewer por su usuario.
+    - `-p <pj-name>` vincula automaticamente al proyecto segun nombre.
+
+    Ejemplo (desde rama ejemplo/PR-01):
+    
+    **`gh pr create -f -a @me -r wmoralesdev -p 'CEII Portal'`**
