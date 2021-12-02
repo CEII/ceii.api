@@ -99,6 +99,15 @@ Desde el directorio que contiene el contexto de la base de datos (Ceii.Api.Data)
 ---
 ## Flujo de trabajo
 
+### Flujo
+1. Crear una rama segun convenciones de **git flow**.
+
+    **OJO**: Solo usar git flow para la creacion de ramas
+
+2. Commitear segun [estandares](#estandar-para-commits)
+
+3. Crear un Pull Request desde **gh cli**
+
 ### Git Flow
 Para facilitar el desarrollo, se usará [GitFlow](https://danielkummer.github.io/git-flow-cheatsheet/) y su manejo por ramas.
 
@@ -125,7 +134,6 @@ Para facilitar la creacion de PR's. [Instalar](https://cli.github.com/)
     - `-f` completa la descripcion con los nombres de los commits de la rama existente
     - `-a <login>` completa el assignee por su usuario. Usar @me para autoasignarse
     - `-r <login>` completa el reviewer por su usuario.
-    - `-p <pj-name>` vincula automaticamente al proyecto segun nombre.
 
     Ejemplo (desde rama ejemplo/PR-01):
     
