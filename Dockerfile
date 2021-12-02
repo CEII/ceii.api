@@ -12,6 +12,7 @@ COPY *.sln .
 # Copy .csjproj files
 COPY ./src/Ceii.Api.Core/*.csproj ./src/Ceii.Api.Core/
 COPY ./src/Ceii.Api.Data/*.csproj ./src/Ceii.Api.Data/
+COPY ./src/Ceii.Api.Services/*.csproj ./src/Ceii.Api.Services/
 
 # Restore NuGET Packages
 RUN dotnet restore

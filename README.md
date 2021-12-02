@@ -7,7 +7,7 @@ Desarrollo en .NET 6.0
 - [Paquetes](#paquetes)
 - [Herramientas](#herramientas)
 - [Comandos](#comandos)
-
+- [Flujo de trabajo](#flujo-de-trabajo)
 
 ---
 ## Configuracion
@@ -25,11 +25,13 @@ Desarrollo en .NET 6.0
 
 3. Al configurar la primera vez, o cuando exista una nueva migración actualizar base de datos. [Ver mas (migraciones)](#comandos)
 
-4. Correr proyecto localmente, desde raiz del repositorio 
+4. Correr proyecto localmente, desde raiz del repositorio. Se pueden seleccionar distintos perfiles, se recomienda usar ceii_api
 
     ```bash
-    dotnet watch run --project src/Ceii.Api.Core
+    dotnet watch run --project src/Ceii.Api.Core --launch-profile ceii_api
     ```
+
+- De preferencia, crear alias para los comandos
 
 ---
 ## Proyectos
@@ -92,3 +94,22 @@ Desde el directorio que contiene el contexto de la base de datos (Ceii.Api.Data)
 **Ejemplo**
 
 `dotnet ef --startup-project ../Ceii.Api.Api migrations add InitialCreate`
+
+
+---
+## Flujo de trabajo
+
+### Git Flow
+Para facilitar el desarrollo, se usará [GitFlow](https://danielkummer.github.io/git-flow-cheatsheet/) y su manejo por ramas.
+
+#### Prefijos de ramas
+- Feature: feature/
+- Bugfix: bugfix/
+- Release: release/
+- Hotfix: hotfix/
+
+#### Escenarios
+- Feature: para agregar funcionalidad
+- Bugfix: para reparar errores que no están en producción
+- Release: para publicar una versión a producción
+- Hotfix: para reparar errores en caliente, generados o encontrados en producción
