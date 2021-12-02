@@ -5,6 +5,7 @@ using Ceii.Api.Data.Entities;
 using Ceii.Api.Data.Enums;
 using Ceii.Api.Data.Utils;
 using Ceii.Api.Services.Abstract;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -23,6 +24,23 @@ public class IndentityController : ControllerBase
         try
         {
             return await _repo.GetByRole(role, info);
+        } 
+        catch(Exception ex)
+        {
+            var mssg = $"Error while fetching users: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
+
+            Log.Error(ex, mssg);
+            return BadRequest(mssg);
+        }
+    }
+
+    [HttpPost("create")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public async Task<ActionResult<User>> Create(User u)
+    {
+        try
+        {
+            return await _repo.Create(u);
         } 
         catch(Exception ex)
         {

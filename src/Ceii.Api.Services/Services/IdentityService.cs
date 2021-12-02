@@ -17,8 +17,16 @@ public class IdentityService : IIdentityRepository
 
     public async Task<PaginatedList<User>> GetByRole(IdentityRole role, PagingInfo info)
     {
-        var users = _ctx.Users.Where(u => u.Role == role);
+        var users = _ctx.Users!.Where(u => u.Role == role);
 
         return await PaginatedList<User>.CreateAsync(users, info);
+    }
+
+    public async Task<User> Create(User u)
+    {
+        var result = _ctx.Add(u);
+        await _ctx.SaveChangesAsync();
+
+        return result.Entity;
     }
 }
