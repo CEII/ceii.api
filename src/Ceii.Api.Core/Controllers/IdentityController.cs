@@ -17,7 +17,7 @@ public class IndentityController : ControllerBase
 
     public IndentityController(IIdentityRepository repo) => _repo = repo;
 
-    [HttpGet("{role}")]
+    [HttpGet("/role/{role}")]
     public async Task<ActionResult<PaginatedList<User>>> GetByRole(IdentityRole role, [FromQuery] PagingInfo info)
     {
         try
@@ -59,7 +59,6 @@ public class IndentityController : ControllerBase
         {
             var mssg = $"Error while creating users: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
 
-            Log.Error(ex, mssg);
             return BadRequest(mssg);
         }
     }
