@@ -34,6 +34,22 @@ public class IndentityController : ControllerBase
         }
     }
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<User>> GetById(string id)
+    {
+        try
+        {
+            return await _repo.GetById(id);
+        }
+        catch(Exception ex)
+        {
+            var mssg = $"Error while fetching user by id: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
+
+            Log.Error(ex, mssg);
+            return BadRequest(mssg);
+        }
+    }
+
     [HttpPost("create")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult<User>> Create(User u)
@@ -44,7 +60,7 @@ public class IndentityController : ControllerBase
         } 
         catch(Exception ex)
         {
-            var mssg = $"Error while fetching users: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
+            var mssg = $"Error while creating users: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
 
             Log.Error(ex, mssg);
             return BadRequest(mssg);
