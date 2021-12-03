@@ -93,7 +93,7 @@ Desde el directorio que contiene el contexto de la base de datos (Ceii.Api.Data)
 
 **Ejemplo**
 
-`dotnet ef --startup-project ../Ceii.Api.Api migrations add InitialCreate`
+`dotnet ef --startup-project ../Ceii.Api.Core migrations add InitialCreate`
 
 
 ---
@@ -134,14 +134,14 @@ Para facilitar la creacion de PR's. [Instalar](https://cli.github.com/)
 
 - **`gh pr create`**
     
-    Permite crear ramas a traves de flags.
+    Permite crear PR's a traves de flags.
     - `-f` completa la descripcion con los nombres de los commits de la rama existente
     - `-a <login>` completa el assignee por su usuario. Usar @me para autoasignarse
     - `-r <login>` completa el reviewer por su usuario.
 
     Ejemplo (desde rama ejemplo/PR-01):
     
-    **`gh pr create -f -a @me -r wmoralesdev -p 'CEII Portal'`**
+    **`gh pr create -f -a @me -r wmoralesdev`**
 
 ---
 

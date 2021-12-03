@@ -7,7 +7,6 @@ using Ceii.Api.Data.Utils;
 using Ceii.Api.Services.Abstract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
 
 namespace Ceii.Api.Core.Controllers;
 
@@ -18,7 +17,7 @@ public class IndentityController : ControllerBase
 
     public IndentityController(IIdentityRepository repo) => _repo = repo;
 
-    [HttpGet("{role}")]
+    [HttpGet("/role/{role}")]
     public async Task<ActionResult<PaginatedList<User>>> GetByRole(IdentityRole role, [FromQuery] PagingInfo info)
     {
         try
@@ -29,7 +28,21 @@ public class IndentityController : ControllerBase
         {
             var mssg = $"Error while fetching users: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
 
-            Log.Error(ex, mssg);
+            return BadRequest(mssg);
+        }
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<User>> GetById(string id)
+    {
+        try
+        {
+            return await _repo.GetById(id);
+        }
+        catch(Exception ex)
+        {
+            var mssg = $"Error while fetching user by id: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
+
             return BadRequest(mssg);
         }
     }
@@ -44,9 +57,8 @@ public class IndentityController : ControllerBase
         } 
         catch(Exception ex)
         {
-            var mssg = $"Error while fetching users: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
+            var mssg = $"Error while creating users: {(ex.InnerException is null ? ex.Message : ex.InnerException.Message)}";
 
-            Log.Error(ex, mssg);
             return BadRequest(mssg);
         }
     }

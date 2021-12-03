@@ -6,6 +6,7 @@ using Ceii.Api.Data.Entities;
 using Ceii.Api.Data.Enums;
 using Ceii.Api.Data.Utils;
 using Ceii.Api.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ceii.Api.Services.Services;
 
@@ -28,5 +29,12 @@ public class IdentityService : IIdentityRepository
         await _ctx.SaveChangesAsync();
 
         return result.Entity;
+    }
+
+    public async Task<User> GetById(string id)
+    {
+        var user = await _ctx!.Users!.Where(u => u.Email == id || u.OAuthId == id).FirstOrDefaultAsync();
+
+        return user;
     }
 }
