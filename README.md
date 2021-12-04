@@ -84,7 +84,7 @@ Servicios provistos para Core
 ---
 ## Comandos
 
-### Migraciones
+### Migraciones - Crear
 Desde el directorio que contiene el contexto de la base de datos (Ceii.Api.Data)
 
 **Plantilla**
@@ -95,7 +95,16 @@ Desde el directorio que contiene el contexto de la base de datos (Ceii.Api.Data)
 
 `dotnet ef --startup-project ../Ceii.Api.Core migrations add InitialCreate`
 
+### Migraciones - Actualizar BD
+Para actualizar la base de datos (ejecutar migraciones pendientes), desde la carpeta que contiene Ceii.Api.Data:
 
+**Plantilla**
+
+`dotnet ef --startup-project <ruta-de-pj-de-inicio> database update`
+
+**Ejemplo**
+
+`dotnet ef --startup-project ../Ceii.Api.Core database update`
 ---
 ## Flujo de trabajo
 
